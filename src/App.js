@@ -1,23 +1,15 @@
-import './App.css'
-import {useSelector,useDispatch} from 'react-redux'
-import {fetchFollowers } from './redux/action/gitHubAction'
+import {useSelector} from 'react-redux'
+import './App.css';
+import Header from './components/Header';
+import TodoList from './components/TodoList';
 function App() {
-  const dispatch = useDispatch()
-  const products = useSelector(state => state.githubReducer )
-  console.log(products);
-
-  const ctaUpdataHandler = () => {
-   const dataPassToAction = "naveed-rana";
-     dispatch(fetchFollowers(dataPassToAction))
-
-  }
- 
+  const todofromRedux = useSelector(state => state.TodoReducer )
   return (
-    <div className="App">
-      <button >fetch Products Reducer</button>
-      <button >fetch followers Reducer</button>
-      <button onClick={ctaUpdataHandler} >Update Reducer</button>
-
+    <div className="App"> 
+      <header>     <h1> Todo App </h1>
+</header>
+<Header   />
+<TodoList todos={todofromRedux} />
     </div>
   );
 }
